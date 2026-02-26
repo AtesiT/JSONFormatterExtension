@@ -1,13 +1,17 @@
 function format() {
     const pre = document.querySelector('body > pre');
     
-    if (!pre || document.body.children.length > 1) return;
+    const rawData = pre ? pre.innerText : document.body.innerText;
 
-    const rawData = pre.innerText;
+    const text = rawData.trim();
+
+    if (!text.startsWith('{') && !text.startsWith('[')) return;
 
     try {
-        const jsonObject = JSON.parse(rawData);
-        
+        const jsonObject = JSON.parse(text);
+
+        console.log("JSON Detected. Formatting...");
+
         document.body.innerHTML = '';
         document.body.classList.add('json-format-body');
 
@@ -32,7 +36,7 @@ function format() {
         });
 
     } catch (e) {
-        console.log("Not a valid JSON page");
+        console.log("Not valid JSON or normal website.");
     }
 }
 
