@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "JSON Format",
+  "version": "1.0",
+  "description": "A simple and beautiful JSON formatter.",
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ]
+}
